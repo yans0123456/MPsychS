@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psychological Association</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#4A90E2',
+secondary: '#67B279'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+function showLoginPrompt() {
+alert('Please contact MPsychS Membership Team: membership@MPsychS.org');
+}
+function showOnlineResourcesModal() {
+const modal = document.getElementById('onlineResourcesModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+}
+function closeOnlineResourcesModal() {
+const modal = document.getElementById('onlineResourcesModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+</script>
+</head>
+<body class="bg-white min-h-screen">
+<nav class="fixed top-0 w-full bg-white shadow-md z-50">
+<div class="flex justify-between items-center px-4 h-14">
+<button onclick="toggleMenu()" class="p-2"><i class="fas fa-bars text-gray-700"></i></button>
+<img src="https://static.readdy.ai/image/ba271a7986b86d791156e856227eb3aa/48398240c9611e795a0e6404b7dac87f.png" alt="MPsychS Logo" class="h-12">
+<a href="#" onclick="showProfileModal()" class="p-2"><i class="fas fa-user text-gray-700"></i></a>
+</div>
+</nav>
+<div id="sideMenu" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
+<div class="flex justify-between items-center p-4 border-b">
+<img src="https://static.readdy.ai/image/ba271a7986b86d791156e856227eb3aa/48398240c9611e795a0e6404b7dac87f.png" alt="MPsychS Logo" class="h-12">
+<button onclick="toggleMenu()" class="p-2">
+<i class="fas fa-times text-gray-700"></i>
+</button>
+</div>
+<div class="py-4">
+<a href="index.html" onclick="toggleMenu()" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-150">
+<i class="fas fa-home w-6"></i>
+<span class="ml-2">Home</span>
+</a>
+<a href="#" onclick="showMentalHealthModal()" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-150">
+<i class="fas fa-brain w-6"></i>
+<span class="ml-2">Mental Health</span>
+</a>
+<a href="#" onclick="showSupportGroupsModal()" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-150">
+<i class="fas fa-users w-6"></i>
+<span class="ml-2">Support Groups</span>
+</a>
+<a href="#" onclick="showResourcesModal()" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-150">
+<i class="fas fa-book w-6"></i>
+<span class="ml-2">Resources</span>
+</a>
+<a href="#" onclick="showCareerModal()" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-150">
+<i class="fas fa-briefcase w-6"></i>
+<span class="ml-2">MPsychS Career</span>
+</a>
+<a href="#" onclick="showAboutModal()" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-150">
+<i class="fas fa-building w-6"></i>
+<span class="ml-2">About Us</span>
+</a>
+<a href="#" onclick="showContactModal()" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-150">
+<i class="fas fa-envelope w-6"></i>
+<span class="ml-2">Contact</span>
+</a>
+</div>
+</div>
+<div id="overlay" class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-40"></div>
+<div id="therapistsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">Psychological Supervision Research</h3>
+<button onclick="closeTherapistsModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6 overflow-y-auto">
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<img src="https://public.readdy.ai/ai/img_res/5f7f73773f657952869021b870036dca.jpg" alt="Psychological Supervision" class="w-full h-48 object-cover rounded-lg mb-4 sticky top-0">
+<div class="space-y-4">
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">The Impact of Clinical Supervision on Therapist Development: A Longitudinal Study</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Thompson, K., Anderson, M., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Journal of Clinical Psychology, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Examining the long-term effects of supervision on therapist competency and professional growth.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">Supervision Models in Psychology: A Systematic Review</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Roberts, J., Chen, H., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Clinical Supervision Quarterly, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Analysis of different supervision models and their effectiveness in clinical practice.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">Cultural Competency in Psychological Supervision</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Martinez, R., Wilson, D., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Journal of Multicultural Counseling, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Exploring cultural aspects and competencies in supervision relationships.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">Online Supervision in Psychology: Challenges and Opportunities</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Lee, S., Brown, A., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Digital Psychology Review, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Examining the effectiveness of remote supervision in psychological practice.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">Supervisor-Supervisee Alliance: A Meta-Analysis</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Garcia, M., Taylor, S., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Professional Psychology: Research and Practice, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Analysis of factors contributing to effective supervision relationships.</p>
+</article>
+<article class="pb-4">
+<h4 class="text-sm font-medium text-gray-800">Evidence-Based Supervision Practices in Clinical Psychology</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Miller, D., Johnson, L., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Clinical Supervision Journal, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Review of evidence-based approaches in psychological supervision.</p>
+</article>
+</div>
+</div>
+<div class="pt-4">
+<button onclick="closeTherapistsModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div id="appointmentModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">Gestalt Therapy Research</h3>
+<button onclick="closeAppointmentModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<img src="https://public.readdy.ai/ai/img_res/a3bfda8fa4b1a524939f5ed06f4617d6.jpg" alt="Gestalt Therapy" class="w-full h-48 object-cover rounded-lg mb-4">
+<div class="space-y-4">
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">The Effectiveness of Gestalt Therapy in Modern Clinical Practice</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Thompson, K., Anderson, M., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Journal of Humanistic Psychology, 2023</p>
+<p class="text-sm text-gray-600 mt-2">A comprehensive analysis of Gestalt therapy outcomes in contemporary therapeutic settings.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">Mindfulness and Present-Moment Awareness in Gestalt Therapy</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Roberts, J., Chen, H., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Gestalt Review, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Examining the role of mindfulness practices in Gestalt therapeutic approaches.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">Integration of Gestalt Principles in Group Therapy Settings</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Martinez, R., Wilson, D., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Group Dynamics, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Analysis of Gestalt therapy principles applied in group therapeutic contexts.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">Emotional Processing in Gestalt Therapy: A Systematic Review</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Lee, S., Brown, A., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Psychotherapy Research, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Review of emotional processing mechanisms in Gestalt therapeutic interventions.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">The Role of Creative Experiments in Gestalt Therapy</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Garcia, M., Taylor, S., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Creativity in Psychotherapy, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Investigation of creative methods and experiments in Gestalt practice.</p>
+</article>
+<article class="pb-4">
+<h4 class="text-sm font-medium text-gray-800">Neuroscience and Gestalt Therapy: Modern Perspectives</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Miller, D., Johnson, L., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Neuroscience & Psychotherapy, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Exploring the neurological basis of Gestalt therapeutic approaches.</p>
+</article>
+</div>
+</div>
+<div class="pt-4">
+<button onclick="closeAppointmentModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div id="resourcesModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">Mental Health Resources</h3>
+<button onclick="closeResourcesModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Self-Help Guides</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-file-pdf text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">Stress Management Techniques</button>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-file-pdf text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">Anxiety Coping Strategies</button>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-file-pdf text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">Depression Self-Care Guide</button>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Educational Videos</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-play-circle text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">Understanding Mental Health</button>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-play-circle text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">Mindfulness Meditation Guide</button>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-play-circle text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">Building Healthy Relationships</button>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Recommended Reading</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-book text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">The Anxiety Workbook</button>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-book text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">Mind Over Mood</button>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-book text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">The Happiness Trap</button>
+</li>
+</ul>
+</div>
+<div class="pt-4">
+<button onclick="closeResourcesModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">Contact Us</h3>
+<button onclick="closeContactModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center space-x-3">
+<i class="fas fa-envelope text-primary"></i>
+<div>
+<h4 class="font-medium text-gray-800">Email</h4>
+<p class="text-gray-600 text-sm">info@MPsychS.org</p>
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-map-marker-alt text-primary"></i>
+<div>
+<h4 class="font-medium text-gray-800">Address</h4>
+<p class="text-gray-600 text-sm">1525 Lincoln Cir<br>Mclean VA 22102</p>
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-clock text-primary"></i>
+<div>
+<h4 class="font-medium text-gray-800">Office Hours</h4>
+<p class="text-gray-600 text-sm">Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 2:00 PM</p>
+</div>
+</div>
+<div class="pt-4">
+<button onclick="closeContactModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div id="aboutModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">About Us</h3>
+<button onclick="closeAboutModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-4">
+<div class="flex justify-center mb-6">
+<img src="https://static.readdy.ai/image/ba271a7986b86d791156e856227eb3aa/48398240c9611e795a0e6404b7dac87f.png" alt="MPsychS Logo" class="h-32">
+</div>
+<p class="text-gray-600 text-sm">MPsychS is a completely independent institution focusing on mental health professionals committed to providing high-quality psychological care and support.</p>
+<div class="space-y-2">
+<h4 class="font-medium text-gray-800">Our Mission</h4>
+<p class="text-gray-600 text-sm">To promote mental wellness and provide accessible, evidence-based psychological services to our community.</p>
+</div>
+<div class="space-y-2">
+<h4 class="font-medium text-gray-800">Our Values</h4>
+<ul class="text-gray-600 text-sm list-disc pl-4 space-y-1">
+<li>Compassionate Care</li>
+<li>Professional Excellence</li>
+<li>Confidentiality</li>
+<li>Inclusive Support</li>
+</ul>
+</div>
+<div class="space-y-2">
+<h4 class="font-medium text-gray-800">Our Committees</h4>
+<div class="space-y-3">
+<div class="flex items-start space-x-3">
+<i class="fas fa-users text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Structuralism Research Committee</h5>
+<p class="text-xs text-gray-600">Leads research initiatives and academic publications</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-graduation-cap text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Functionalism Research Committee</h5>
+<p class="text-xs text-gray-600">Oversees professional development and training programs</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-handshake text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Behaviorism Research Committee</h5>
+<p class="text-xs text-gray-600">Manages public engagement and awareness programs</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-brain text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Psychoanalysis Research Committee</h5>
+<p class="text-xs text-gray-600">Conducts research on psychoanalytic theory and practice</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-lightbulb text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Cognitive Psychology Research Committee</h5>
+<p class="text-xs text-gray-600">Studies mental processes and cognitive development</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-clipboard-check text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Ethics Committee</h5>
+<p class="text-xs text-gray-600">Ensures adherence to professional standards and guidelines</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-heart text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Humanistic Psychology Research Committee</h5>
+<p class="text-xs text-gray-600">Focuses on personal growth and self-actualization research</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-puzzle-piece text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Gestalt Therapy Research Committee</h5>
+<p class="text-xs text-gray-600">Studies holistic approaches and experiential therapy methods</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-user-shield text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Psychological Supervisors Committee</h5>
+<p class="text-xs text-gray-600">Oversees supervision standards and professional development</p>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-4">
+<button onclick="closeAboutModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div id="articlesModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold text-primary">Academic Articles</h3>
+<button onclick="closeArticlesModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<img src="https://public.readdy.ai/ai/img_res/98b7c8e4b92d2c9c78c51e483f73f434.jpg" alt="Research Report" class="w-full h-48 object-cover rounded-lg mb-4">
+<div class="space-y-4">
+<article class="border-b pb-4">
+<h5 class="text-sm font-medium text-gray-800 hover:text-primary cursor-pointer" onclick="showLoginPrompt()">The Impact of Early Intervention in Mental Health Treatment</h5>
+<p class="text-xs text-gray-500 mt-1">Authors: Anderson, E., Zhang, L., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Journal of Clinical Psychology, 2023</p>
+<p class="text-sm text-gray-600 mt-2">A comprehensive study examining the effectiveness of early intervention strategies in mental health treatment outcomes.</p>
+</article>
+<article class="border-b pb-4">
+<h5 class="text-sm font-medium text-gray-800 hover:text-primary cursor-pointer" onclick="showLoginPrompt()">Digital Interventions in Mental Health Care: A Systematic Review</h5>
+<p class="text-xs text-gray-500 mt-1">Authors: Roberts, S., Chen, H., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Digital Health Journal, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Analysis of the effectiveness of digital mental health interventions across different populations.</p>
+</article>
+<article class="border-b pb-4">
+<h5 class="text-sm font-medium text-gray-800 hover:text-primary cursor-pointer" onclick="showLoginPrompt()">Cultural Competency in Mental Health Services</h5>
+<p class="text-xs text-gray-500 mt-1">Authors: Martinez, R., Kim, J., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Journal of Cross-Cultural Psychology, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Examining the role of cultural competency in mental health service delivery and patient outcomes.</p>
+</article>
+<article class="border-b pb-4">
+<h5 class="text-sm font-medium text-gray-800 hover:text-primary cursor-pointer" onclick="showLoginPrompt()">Mindfulness-Based Interventions for Anxiety Disorders</h5>
+<p class="text-xs text-gray-500 mt-1">Authors: Thompson, K., Patel, N., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Journal of Anxiety Disorders, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Meta-analysis of mindfulness-based interventions in treating various anxiety disorders.</p>
+</article>
+<article class="border-b pb-4">
+<h5 class="text-sm font-medium text-gray-800 hover:text-primary cursor-pointer" onclick="showLoginPrompt()">The Role of Social Support in Mental Health Recovery</h5>
+<p class="text-xs text-gray-500 mt-1">Authors: Wilson, M., Garcia, A., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Social Psychiatry, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Investigation of social support networks' impact on mental health recovery outcomes.</p>
+</article>
+<article class="border-b pb-4">
+<h5 class="text-sm font-medium text-gray-800 hover:text-primary cursor-pointer" onclick="showLoginPrompt()">Teletherapy Effectiveness During COVID-19</h5>
+<p class="text-xs text-gray-500 mt-1">Authors: Lee, S., Brown, R., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Telemedicine Journal, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Analysis of teletherapy outcomes during the pandemic and implications for future practice.</p>
+</article>
+<article class="pb-4">
+<h5 class="text-sm font-medium text-gray-800 hover:text-primary cursor-pointer" onclick="showLoginPrompt()">Integrative Approaches to Mental Health Treatment</h5>
+<p class="text-xs text-gray-500 mt-1">Authors: Miller, D., Johnson, L., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Integrative Psychology Review, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Evaluation of combined treatment approaches in mental health care delivery.</p>
+</article>
+</div>
+</div>
+<div class="pt-4">
+<button onclick="closeArticlesModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+function showSupportGroupsModal() {
+const modal = document.getElementById('supportGroupsModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+const menu = document.getElementById('sideMenu');
+const overlay = document.getElementById('overlay');
+menu.classList.add('-translate-x-full');
+overlay.classList.remove('opacity-50', 'pointer-events-auto');
+overlay.classList.add('opacity-0', 'pointer-events-none');
+}
+function closeSupportGroupsModal() {
+const modal = document.getElementById('supportGroupsModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+const menu = document.getElementById('sideMenu');
+const overlay = document.getElementById('overlay');
+menu.classList.add('-translate-x-full');
+overlay.classList.remove('opacity-50', 'pointer-events-auto');
+overlay.classList.add('opacity-0', 'pointer-events-none');
+}
+function showArticlesModal() {
+const modal = document.getElementById('articlesModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+}
+function closeArticlesModal() {
+const modal = document.getElementById('articlesModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+document.getElementById('articlesModal').addEventListener('click', function(e) {
+if (e.target === this) {
+closeArticlesModal();
+}
+});
+function toggleMenu() {
+const menu = document.getElementById('sideMenu');
+const overlay = document.getElementById('overlay');
+if (menu.classList.contains('-translate-x-full')) {
+menu.classList.remove('-translate-x-full');
+overlay.classList.remove('opacity-0', 'pointer-events-none');
+overlay.classList.add('opacity-50', 'pointer-events-auto');
+document.body.style.overflow = 'hidden';
+} else {
+menu.classList.add('-translate-x-full');
+overlay.classList.remove('opacity-50', 'pointer-events-auto');
+overlay.classList.add('opacity-0', 'pointer-events-none');
+document.body.style.overflow = '';
+}
+}
+function showAboutModal() {
+const modal = document.getElementById('aboutModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+toggleMenu();
+}
+function closeAboutModal() {
+const modal = document.getElementById('aboutModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+function showTherapistsModal() {
+const modal = document.getElementById('therapistsModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+toggleMenu();
+}
+function closeTherapistsModal() {
+const modal = document.getElementById('therapistsModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+const menu = document.getElementById('sideMenu');
+const overlay = document.getElementById('overlay');
+menu.classList.add('-translate-x-full');
+overlay.classList.remove('opacity-50', 'pointer-events-auto');
+overlay.classList.add('opacity-0', 'pointer-events-none');
+}
+function showAppointmentModal() {
+const modal = document.getElementById('appointmentModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+}
+function closeAppointmentModal() {
+const modal = document.getElementById('appointmentModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+document.getElementById('overlay').addEventListener('click', function() {
+toggleMenu();
+});
+document.getElementById('aboutModal').addEventListener('click', function(e) {
+if (e.target === this) {
+closeAboutModal();
+}
+});
+document.getElementById('therapistsModal').addEventListener('click', function(e) {
+if (e.target === this) {
+closeTherapistsModal();
+}
+});
+document.getElementById('appointmentModal').addEventListener('click', function(e) {
+if (e.target === this) {
+closeAppointmentModal();
+}
+});
+function showContactModal() {
+const modal = document.getElementById('contactModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+toggleMenu();
+}
+function closeContactModal() {
+const modal = document.getElementById('contactModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+document.getElementById('contactModal').addEventListener('click', function(e) {
+if (e.target === this) {
+closeContactModal();
+}
+});
+function showCareerModal() {
+const modal = document.getElementById('careerModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+toggleMenu();
+}
+function closeCareerModal() {
+const modal = document.getElementById('careerModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+document.getElementById('careerModal').addEventListener('click', function(e) {
+if (e.target === this) {
+closeCareerModal();
+}
+});
+function showResourcesModal() {
+const modal = document.getElementById('resourcesModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+const menu = document.getElementById('sideMenu');
+const overlay = document.getElementById('overlay');
+menu.classList.add('-translate-x-full');
+overlay.classList.remove('opacity-50', 'pointer-events-auto');
+overlay.classList.add('opacity-0', 'pointer-events-none');
+}
+function closeResourcesModal() {
+const modal = document.getElementById('resourcesModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+document.getElementById('resourcesModal').addEventListener('click', function(e) {
+if (e.target === this) {
+closeResourcesModal();
+}
+});
+function showProfileModal() {
+const modal = document.getElementById('profileModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+}
+function closeProfileModal() {
+const modal = document.getElementById('profileModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+document.getElementById('profileModal').addEventListener('click', function(e) {
+if (e.target === this) {
+closeProfileModal();
+}
+});
+function showServicesModal() {
+const modal = document.getElementById('servicesModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+}
+function showTherapyModal() {
+const modal = document.getElementById('therapyModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+}
+function showMentalHealthModal() {
+const modal = document.getElementById('mentalHealthModal');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+const menu = document.getElementById('sideMenu');
+const overlay = document.getElementById('overlay');
+menu.classList.add('-translate-x-full');
+overlay.classList.remove('opacity-50', 'pointer-events-auto');
+overlay.classList.add('opacity-0', 'pointer-events-none');
+}
+function closeMentalHealthModal() {
+const modal = document.getElementById('mentalHealthModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+const menu = document.getElementById('sideMenu');
+const overlay = document.getElementById('overlay');
+menu.classList.add('-translate-x-full');
+overlay.classList.remove('opacity-50', 'pointer-events-auto');
+overlay.classList.add('opacity-0', 'pointer-events-none');
+}
+document.getElementById('mentalHealthModal').addEventListener('click', function(e) {
+if (e.target === this) {
+closeMentalHealthModal();
+}
+});
+function closeTherapyModal() {
+const modal = document.getElementById('therapyModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+document.getElementById('therapyModal').addEventListener('click', function(e) {
+if (e.target === this) {
+closeTherapyModal();
+}
+});
+function closeServicesModal() {
+const modal = document.getElementById('servicesModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+document.getElementById('servicesModal').addEventListener('click', function(e) {
+if (e.target === this) {
+closeServicesModal();
+}
+});
+</script>
+<div id="profileModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">Membership</h3>
+<button onclick="closeProfileModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-gray-50 p-4 rounded-lg">
+<p class="text-gray-600">For more information please contact our membership team:</p>
+<div class="flex items-center space-x-2 mt-4 text-primary">
+<i class="fas fa-envelope"></i>
+<span>membership@MPsychS.org</span>
+</div>
+</div>
+<div class="pt-4">
+<button onclick="closeProfileModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+<main class="pt-14 pb-16 h-[calc(100vh-30px)]">
+<div class="relative h-48 mb-6">
+<img src="https://public.readdy.ai/ai/img_res/abd124f07f1c45a8ff1114f37253c8d6.jpg" alt="Psychological Care" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+<h2 class="text-white text-2xl font-semibold px-4 text-center">Empowering Mental Health Professionals, Advancing Psychological Care</h2>
+</div>
+</div>
+<div class="px-4 mb-8">
+<div class="grid grid-cols-4 gap-4 mb-8">
+<a href="#" onclick="showTherapyModal()" class="text-center">
+<div class="w-16 h-16 mx-auto mb-2 rounded-lg overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/331f0fa8ce1a723a31abd055a0f78154.jpg" class="w-full h-full object-cover">
+</div>
+<span class="text-xs text-gray-700">Therapy</span>
+</a>
+<a href="javascript:void(0)" onclick="showMentalHealthModal()" class="text-center">
+<div class="w-16 h-16 mx-auto mb-2 rounded-lg overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/74399f6cdce50e0ab9708aa1d5fab2d9.jpg" class="w-full h-full object-cover">
+</div>
+<span class="text-xs text-gray-700">Mental Health</span>
+</a>
+<a href="#" onclick="showSupportGroupsModal()" class="text-center">
+<div class="w-16 h-16 mx-auto mb-2 rounded-lg overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/ca0f09e6fdf26d794a91eb643cd285bf.jpg" class="w-full h-full object-cover">
+</div>
+<span class="text-xs text-gray-700">Support Groups</span>
+</a>
+<a href="#" onclick="showResourcesModal()" class="text-center">
+<div class="w-16 h-16 mx-auto mb-2 rounded-lg overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/2bf2a792fcfc369514842abb40ef1ada.jpg" class="w-full h-full object-cover">
+</div>
+<span class="text-xs text-gray-700">Resources</span>
+</a>
+</div>
+<div class="space-y-4">
+<div class="bg-white rounded-lg shadow-md p-4">
+<h3 class="text-lg font-semibold mb-2">Industry Insight</h3>
+<div class="space-y-4">
+<img src="https://public.readdy.ai/ai/img_res/2d760d21c6b2ff536dd39ae0173c1e90.jpg" alt="Industry Trends" class="w-full h-40 object-cover rounded-lg">
+<div class="space-y-3">
+<p class="text-sm text-gray-600">Stay updated with the latest trends and developments in the psychological industry.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-gray-50 p-3 rounded-lg">
+<h4 class="text-sm font-medium text-gray-800">Market Growth</h4>
+<p class="text-2xl font-semibold text-primary mt-1">12.8%</p>
+<p class="text-xs text-gray-600">Annual increase</p>
+</div>
+<div class="bg-gray-50 p-3 rounded-lg">
+<h4 class="text-sm font-medium text-gray-800">Digital Adoption</h4>
+<p class="text-2xl font-semibold text-primary mt-1">67%</p>
+<p class="text-xs text-gray-600">Industry-wide</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-600">Research Publications</span>
+<span class="text-primary font-medium">1,240+</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-600">Active Practitioners</span>
+<span class="text-primary font-medium">5,800+</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-600">Training Programs</span>
+<span class="text-primary font-medium">320+</span>
+</div>
+</div>
+</div>
+<button onclick="showArticlesModal()" class="inline-block bg-primary text-white px-4 py-2 rounded-button text-sm mt-3">View Reports <i class="fas fa-chevron-right ml-1 text-xs"></i></button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md p-4">
+<h3 class="text-lg font-semibold mb-2">Gestalt Therapy</h3>
+<div class="space-y-4">
+<img src="https://public.readdy.ai/ai/img_res/7fdee487584af002d338ee554d01e880.jpg" alt="Gestalt Therapy" class="w-full h-40 object-cover rounded-lg">
+<div class="space-y-3">
+<p class="text-sm text-gray-600">Experience holistic therapeutic approach focusing on present moment awareness and personal growth through experiential methods.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-gray-50 p-3 rounded-lg">
+<h4 class="text-sm font-medium text-gray-800">Session Length</h4>
+<p class="text-2xl font-semibold text-primary mt-1">60</p>
+<p class="text-xs text-gray-600">Minutes</p>
+</div>
+<div class="bg-gray-50 p-3 rounded-lg">
+<h4 class="text-sm font-medium text-gray-800">Success Rate</h4>
+<p class="text-2xl font-semibold text-primary mt-1">89%</p>
+<p class="text-xs text-gray-600">Client satisfaction</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check-circle text-primary mr-2"></i>
+<span>Present-Centered Awareness</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check-circle text-primary mr-2"></i>
+<span>Experiential Techniques</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check-circle text-primary mr-2"></i>
+<span>Personal Growth Focus</span>
+</div>
+</div>
+</div>
+<button onclick="showAppointmentModal()" class="inline-block bg-primary text-white px-4 py-2 rounded-button text-sm mt-3">Learn More <i class="fas fa-chevron-right ml-1 text-xs"></i></button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md p-4">
+<h3 class="text-lg font-semibold mb-2">Psychodrama</h3>
+<div class="space-y-4">
+<img src="https://public.readdy.ai/ai/img_res/bd4d747f7f088f79288c6aa892c36b73.jpg" alt="Psychodrama Session" class="w-full h-40 object-cover rounded-lg">
+<div class="space-y-3">
+<p class="text-sm text-gray-600">Experience the power of therapeutic role-playing and dramatic self-presentation in a supportive group environment.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-gray-50 p-3 rounded-lg">
+<h4 class="text-sm font-medium text-gray-800">Session Length</h4>
+<p class="text-2xl font-semibold text-primary mt-1">90</p>
+<p class="text-xs text-gray-600">Minutes</p>
+</div>
+<div class="bg-gray-50 p-3 rounded-lg">
+<h4 class="text-sm font-medium text-gray-800">Group Size</h4>
+<p class="text-2xl font-semibold text-primary mt-1">8-12</p>
+<p class="text-xs text-gray-600">Participants</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-600">Weekly Sessions</span>
+<span class="text-primary font-medium">4</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-600">Certified Directors</span>
+<span class="text-primary font-medium">12+</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-600">Success Rate</span>
+<span class="text-primary font-medium">85%</span>
+</div>
+</div>
+</div>
+<button onclick="showPsychodramaModal()" class="inline-block bg-primary text-white px-4 py-2 rounded-button text-sm mt-3">Join Session <i class="fas fa-chevron-right ml-1 text-xs"></i></button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md p-4">
+<h3 class="text-lg font-semibold mb-2">Online Resources</h3>
+<div class="space-y-4">
+<img src="https://public.readdy.ai/ai/img_res/4aa36045d820b3cf1820d673595ec949.jpg" alt="Online Learning" class="w-full h-40 object-cover rounded-lg">
+<div class="space-y-3">
+<p class="text-sm text-gray-600">Access comprehensive collection of psychological resources, research materials, and educational content through digital learning platform.</p>
+<div class="space-y-2">
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-video text-primary mr-2"></i>
+<span>Expert-led Video Lectures</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-book text-primary mr-2"></i>
+<span>Digital Library & Publications</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-tasks text-primary mr-2"></i>
+<span>Assessment Tools</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-chart-line text-primary mr-2"></i>
+<span>Research Databases</span>
+</div>
+</div>
+</div>
+<button onclick="showOnlineResourcesModal()" class="inline-block bg-primary text-white px-4 py-2 rounded-button text-sm mt-3">Learn More <i class="fas fa-chevron-right ml-1 text-xs"></i></button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md p-4">
+<h3 class="text-lg font-semibold mb-2">Psychological Supervisors</h3>
+<div class="space-y-4">
+<img src="https://public.readdy.ai/ai/img_res/9117680bdcd8f7088591b96fcbe32101.jpg" alt="Psychological Supervision" class="w-full h-40 object-cover rounded-lg">
+<div class="space-y-3">
+<p class="text-sm text-gray-600">Psychological Supervisors are highly qualified professionals who provide guidance and oversight in various psychological practices. They ensure the highest standards of psychological care and professional development.</p>
+<div class="space-y-2">
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check-circle text-primary mr-2"></i>
+<span>Clinical Supervision & Mentoring</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check-circle text-primary mr-2"></i>
+<span>Research Guidance & Support</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check-circle text-primary mr-2"></i>
+<span>Professional Development Training</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check-circle text-primary mr-2"></i>
+<span>Quality Assurance Standards</span>
+</div>
+</div>
+</div>
+<button onclick="showTherapistsModal()" class="inline-block bg-primary text-white px-4 py-2 rounded-button text-sm mt-3">Learn More <i class="fas fa-chevron-right ml-1 text-xs"></i></button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md p-4">
+<h3 class="text-lg font-semibold mb-2">Community Care Research</h3>
+<img src="https://public.readdy.ai/ai/img_res/2576d87d04c22d0d5687897e1193559f.jpg" alt="Community Research" class="w-full h-40 object-cover rounded-lg mb-4">
+<div class="space-y-3">
+<div class="border-b pb-2">
+<h4 class="text-sm font-medium text-gray-800">The Role of Community Support in Mental Health Recovery: A Systematic Review</h4>
+<p class="text-xs text-gray-500">Community Mental Health Journal, 2023</p>
+</div>
+<div class="border-b pb-2">
+<h4 class="text-sm font-medium text-gray-800">Peer Support Programs in Community Mental Health Settings: Evidence and Outcomes</h4>
+<p class="text-xs text-gray-500">Social Psychiatry and Psychiatric Epidemiology, 2023</p>
+</div>
+<div class="border-b pb-2">
+<h4 class="text-sm font-medium text-gray-800">Community-Based Mental Health Interventions: A Meta-Analysis</h4>
+<p class="text-xs text-gray-500">Journal of Community Psychology, 2022</p>
+</div>
+<div class="pb-2">
+<h4 class="text-sm font-medium text-gray-800">Social Support Networks in Mental Health Recovery: Longitudinal Study</h4>
+<p class="text-xs text-gray-500">Psychiatric Services, 2022</p>
+</div>
+</div>
+<button onclick="showServicesModal()" class="inline-block bg-primary text-white px-4 py-2 rounded-button text-sm mt-3">View Articles <i class="fas fa-chevron-right ml-1 text-xs"></i></button>
+</div>
+<div id="onlineResourcesModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">Online Learning Resources</h3>
+<button onclick="closeOnlineResourcesModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<img src="https://public.readdy.ai/ai/img_res/f7c5c59565cecd698533adbdc76f9ed7.jpg" alt="Online Learning" class="w-full h-48 object-cover rounded-lg mb-4">
+<h4 class="font-medium text-gray-800 mb-2 cursor-pointer hover:text-primary" onclick="alert('Please contact MPsychS Membership Team: membership@MPsychS.org')">Digital Learning Platform</h4>
+<p class="text-sm text-gray-600">In America, there are plenty of access to the comprehensive collection of psychological resources, research materials and education content.</p>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Available Resources</h4>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i class="fas fa-video text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Video Lectures</h5>
+<p class="text-xs text-gray-600">Expert-led sessions on various psychological topics</p>
+</div>
+</li>
+<li class="flex items-start space-x-3">
+<i class="fas fa-book text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">E-Books & Articles</h5>
+<p class="text-xs text-gray-600">Digital library of psychological publications</p>
+</div>
+</li>
+<li class="flex items-start space-x-3">
+<i class="fas fa-tasks text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Assessment Tools</h5>
+<p class="text-xs text-gray-600">Professional psychological assessment resources</p>
+</div>
+</li>
+<li class="flex items-start space-x-3">
+<i class="fas fa-chart-line text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Research Data</h5>
+<p class="text-xs text-gray-600">Access to psychological research databases</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Featured Content</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-play-circle text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">Introduction to Clinical Psychology</button>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-play-circle text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">Research Methods in Psychology</button>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-play-circle text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">Cognitive Behavioral Therapy Techniques</button>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-play-circle text-primary mr-2"></i>
+<button onclick="showLoginPrompt()" class="hover:text-primary text-left">Advanced Psychotherapy Methods</button>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Access Information</h4>
+<p class="text-sm text-gray-600">To access these resources, please contact our membership team:</p>
+<div class="mt-3 space-y-2">
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-envelope text-primary mr-2"></i>
+<span>membership@MPsychS.org</span>
+</div>
+</div>
+</div>
+<div class="pt-4">
+<button onclick="closeOnlineResourcesModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 w-full bg-white border-t border-gray-200 z-50">
+<div class="grid grid-cols-4 h-16">
+<a href="index.html" class="flex flex-col items-center justify-center">
+<i class="fas fa-home text-primary"></i>
+<span class="text-xs mt-1">Home</span>
+</a>
+<a href="#" onclick="showServicesModal()" class="flex flex-col items-center justify-center">
+<i class="fas fa-calendar text-gray-400"></i>
+<span class="text-xs mt-1">Services</span>
+</a>
+<a href="#" onclick="showResourcesModal()" class="flex flex-col items-center justify-center">
+<i class="fas fa-book text-gray-400"></i>
+<span class="text-xs mt-1">Resources</span>
+</a>
+<a href="#" onclick="showProfileModal()" class="flex flex-col items-center justify-center">
+<i class="fas fa-user text-gray-400"></i>
+<span class="text-xs mt-1">Membership</span>
+</a>
+</div>
+</nav>
+<div id="servicesModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">Community Care Research</h3>
+<button onclick="closeServicesModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<img src="https://public.readdy.ai/ai/img_res/3d83c035d2eea9e979d4d5845fbb3d7c.jpg" alt="Community Care" class="w-full h-48 object-cover rounded-lg mb-4">
+<div class="space-y-4">
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">The Impact of Community Mental Health Programs: A 10-Year Longitudinal Study</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Thompson, R., Williams, K., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Journal of Community Psychology, 2023</p>
+<p class="text-sm text-gray-600 mt-2">A comprehensive analysis of long-term outcomes in community-based mental health interventions.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">Social Support Networks and Mental Health Recovery: Meta-Analysis</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Chen, H., Anderson, M., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Social Psychiatry and Psychiatric Epidemiology, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Examining the role of social support networks in mental health recovery outcomes.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">Peer Support Programs in Community Settings: Systematic Review</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Martinez, J., Smith, P., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Community Mental Health Journal, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Analysis of peer support program effectiveness in community mental health settings.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">Cultural Competency in Community Mental Health Services</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Lee, S., Johnson, R., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Journal of Cross-Cultural Psychology, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Examining cultural competency impact on service delivery and outcomes.</p>
+</article>
+<article class="border-b pb-4">
+<h4 class="text-sm font-medium text-gray-800">Digital Mental Health Interventions in Community Care</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Wilson, D., Brown, A., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Digital Health Journal, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Evaluating the effectiveness of digital mental health tools in community settings.</p>
+</article>
+<article class="pb-4">
+<h4 class="text-sm font-medium text-gray-800">Prevention Programs in Community Mental Health</h4>
+<p class="text-xs text-gray-500 mt-1">Authors: Garcia, M., Taylor, S., et al.</p>
+<p class="text-xs text-gray-600 mt-2">Prevention Science, 2023</p>
+<p class="text-sm text-gray-600 mt-2">Analysis of preventive mental health programs in community settings.</p>
+</article>
+</div>
+</div>
+<div class="pt-4">
+<button onclick="closeServicesModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div id="mentalHealthModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">Mental Health Services</h3>
+<button onclick="closeMentalHealthModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<img src="https://public.readdy.ai/ai/img_res/088508c21ae3bf1085b8e4732aaa96ca.jpg" alt="Mental Health" class="w-full h-48 object-cover rounded-lg mb-4">
+<h4 class="font-medium text-gray-800 mb-2">Mental Health Support</h4>
+<p class="text-sm text-gray-600">Comprehensive mental health services designed to support your emotional wellbeing and personal growth through evidence-based approaches.</p>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Our Services Include</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Mental Health Assessment</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Anxiety Management</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Depression Treatment</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Stress Reduction Programs</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Mindfulness Training</span>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Treatment Approaches</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-circle text-primary mr-2 text-xs"></i>
+<span>Cognitive Behavioral Therapy (CBT)</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-circle text-primary mr-2 text-xs"></i>
+<span>Mindfulness-Based Stress Reduction</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-circle text-primary mr-2 text-xs"></i>
+<span>Emotional Regulation Techniques</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-circle text-primary mr-2 text-xs"></i>
+<span>Behavioral Activation</span>
+</li>
+</ul>
+</div>
+<div class="pt-4">
+<button onclick="closeMentalHealthModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div id="therapyModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">Therapy Services</h3>
+<button onclick="closeTherapyModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<img src="https://public.readdy.ai/ai/img_res/40085a0cca7fc8fa3d20c3a6794f39af.jpg" alt="Therapy Session" class="w-full h-48 object-cover rounded-lg mb-4">
+<h4 class="font-medium text-gray-800 mb-2">Individual Therapy</h4>
+<p class="text-sm text-gray-600">One-on-one sessions with our experienced therapists to address personal challenges, anxiety, depression, and other mental health concerns.</p>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">What We Treat</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Anxiety & Depression</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Stress Management</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Relationship Issues</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Trauma & PTSD</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Self-Esteem Issues</span>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Our Approach</h4>
+<p class="text-sm text-gray-600">We use evidence-based therapeutic approaches including:</p>
+<ul class="mt-2 space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-circle text-primary mr-2 text-xs"></i>
+<span>Cognitive Behavioral Therapy (CBT)</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-circle text-primary mr-2 text-xs"></i>
+<span>Mindfulness-Based Therapy</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-circle text-primary mr-2 text-xs"></i>
+<span>Solution-Focused Therapy</span>
+</li>
+</ul>
+</div>
+<div class="pt-4">
+<button onclick="closeTherapyModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div id="supportGroupsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">Support Groups</h3>
+<button onclick="closeSupportGroupsModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<img src="https://public.readdy.ai/ai/img_res/57fd28255d0d15a3e1d7db163ebc7783.jpg" alt="Support Groups" class="w-full h-48 object-cover rounded-lg mb-4">
+<h4 class="font-medium text-gray-800 mb-2">Group Support Sessions</h4>
+<p class="text-sm text-gray-600">Join our supportive community where you can connect with others who share similar experiences and challenges.</p>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Upcoming Groups</h4>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i class="fas fa-users text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Anxiety Support Group</h5>
+<p class="text-xs text-gray-600">Wednesdays, 6:00 PM - 7:30 PM</p>
+</div>
+</li>
+<li class="flex items-start space-x-3">
+<i class="fas fa-users text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Depression Recovery Group</h5>
+<p class="text-xs text-gray-600">Mondays, 5:30 PM - 7:00 PM</p>
+</div>
+</li>
+<li class="flex items-start space-x-3">
+<i class="fas fa-users text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Grief Support Circle</h5>
+<p class="text-xs text-gray-600">Thursdays, 7:00 PM - 8:30 PM</p>
+</div>
+</li>
+<li class="flex items-start space-x-3">
+<i class="fas fa-users text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Young Adults Group</h5>
+<p class="text-xs text-gray-600">Tuesdays, 6:30 PM - 8:00 PM</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Benefits of Group Support</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Shared Experiences</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Mutual Support</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Coping Strategies</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Social Connection</span>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">How to Join</h4>
+<p class="text-sm text-gray-600">Contact our group coordinator to learn more about joining a support group:</p>
+<div class="mt-3 space-y-2">
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-envelope text-primary mr-2"></i>
+<span>info@MPsychS.org</span>
+</div>
+</div>
+</div>
+<div class="pt-4">
+<button onclick="closeSupportGroupsModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="careerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">MPsychS Career</h3>
+<button onclick="closeCareerModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<img src="https://public.readdy.ai/ai/img_res/caf2bf644f7417472fe3c03829deccb1.jpg" alt="Career Development" class="w-full h-48 object-cover rounded-lg mb-4">
+<h4 class="font-medium text-gray-800 mb-2">Career Development</h4>
+<p class="text-sm text-gray-600">Explore career opportunities and professional development paths in psychological services and research.</p>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Current Opportunities</h4>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i class="fas fa-briefcase text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Clinical Psychologist</h5>
+<p class="text-xs text-gray-600">Full-time position in Washington DC</p>
+</div>
+</li>
+<li class="flex items-start space-x-3">
+<i class="fas fa-briefcase text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Research Associate</h5>
+<p class="text-xs text-gray-600">Part-time position in Virginia</p>
+</div>
+</li>
+<li class="flex items-start space-x-3">
+<i class="fas fa-briefcase text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Mental Health Counselor</h5>
+<p class="text-xs text-gray-600">Full-time position in Maryland</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Professional Development</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Continuing Education Programs</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Supervision Opportunities</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Research Collaborations</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Networking Events</span>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Contact HR</h4>
+<p class="text-sm text-gray-600">For career inquiries, please contact our HR team:</p>
+<div class="mt-3 space-y-2">
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-envelope text-primary mr-2"></i>
+<span>careers@MPsychS.org</span>
+</div>
+</div>
+</div>
+<div class="pt-4">
+<button onclick="closeCareerModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div id="psychodramaModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white w-[340px] rounded-lg p-6 mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold">Psychodrama Session</h3>
+<button onclick="closePsychodramaModal()" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<img src="https://public.readdy.ai/ai/img_res/3849e750581db006d0564ec5830f71a4.jpg" alt="Psychodrama Session" class="w-full h-48 object-cover rounded-lg mb-4">
+<h4 class="font-medium text-gray-800 mb-2">About Psychodrama</h4>
+<p class="text-sm text-gray-600">Psychodrama is a powerful therapeutic approach that uses guided dramatic action to examine problems or issues raised by an individual or a group. Through role-playing and dramatic self-presentation, participants gain new insights and perspectives.</p>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Session Structure</h4>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i class="fas fa-clock text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Warm-up (20 minutes)</h5>
+<p class="text-xs text-gray-600">Group exercises to build trust and spontaneity</p>
+</div>
+</li>
+<li class="flex items-start space-x-3">
+<i class="fas fa-theater-masks text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Action (50 minutes)</h5>
+<p class="text-xs text-gray-600">Main psychodrama enactment and role-play</p>
+</div>
+</li>
+<li class="flex items-start space-x-3">
+<i class="fas fa-comments text-primary mt-1"></i>
+<div>
+<h5 class="text-sm font-medium text-gray-800">Sharing (20 minutes)</h5>
+<p class="text-xs text-gray-600">Group discussion and personal reflections</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Therapeutic Benefits</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Enhanced Self-awareness</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Emotional Release</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Improved Social Skills</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Problem-solving Skills</span>
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-primary mr-2"></i>
+<span>Personal Growth</span>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+<h4 class="font-medium text-gray-800 mb-2">Registration</h4>
+<p class="text-sm text-gray-600">To register for a psychodrama session, please contact our coordinator:</p>
+<div class="mt-3 space-y-2">
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-envelope text-primary mr-2"></i>
+<span>info@MPsychS.org</span>
+</div>
+</div>
+</div>
+<div class="pt-4">
+<button onclick="closePsychodramaModal()" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-colors duration-300">Close</button>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
